@@ -1,0 +1,89 @@
+html, body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #272727;
+}
+
+/* Styles pour le loader */
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+  z-index: 1000; /* Assurez-vous que le loader est au-dessus de tout le reste */
+  opacity: 0; /* Initialement visible */
+  animation: fadeIn 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: #272727 !important;
+ }
+
+ ::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: #272727 !important;
+ }
+
+ ::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: #272727 !important;;
+ }
+
+ ::ng-deep .mat-form-field-label {
+  /*change color of label*/
+  color: #272727 !important;
+ }
+
+ mat-datepicker-toggle {
+  color: #272727 !important;
+ }
+
+ .mat-calendar-body-selected
+{
+  background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+  border: none;
+  box-shadow: none;
+}
+
+.mat-calendar-body-selected.mat-calendar-body-today{
+  border: none;
+  box-shadow: none !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  border-width: 2px;
+  border-color: transparent;
+  background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  border-color: transparent;
+  background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-in;
+          mask-composite: intersect;
+}
+
+.mat-form-field-appearance-outline.mat-form-field-invalid .mat-form-field-outline-thick {
+  border-color: #f44336; /* Optionnel: couleur différente si le champ est invalide */
+}

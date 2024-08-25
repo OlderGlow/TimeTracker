@@ -1,0 +1,53 @@
+.time-tracker-container {
+  padding: 20px;
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+  border-radius: 8px;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(100px);
+  backdrop-filter: blur(100px);
+}
+.datetime {
+  display: flex;
+  gap: 1rem;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.button-container button {
+  background: linear-gradient(90deg, #d53369 0%, #cc9622 100%);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  color: #fefefe;
+}
+.worklog-list-container {
+  padding: 20px;
+  width: 100%;
+  height: fit-content;
+  background: linear-gradient(90deg, #d53369 0%, #cc9622 100%);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+}
+.flex-container{
+  display: flex;
+  gap: 4rem;
+  width: 90vw;
+}
+.width-max{
+  width: 80%;
+}
+.mat-mdc-card-content{
+  width: 100%;
+}
+app-date-time-picker{
+  width: 50%;
+}
+.controls{
+  padding-top: 1rem;
+}

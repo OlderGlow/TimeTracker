@@ -1,0 +1,59 @@
+@TimeTrackerApi_HostAddress = http://localhost:5183
+
+# Récupérer tous les worklogs pour une date donnée
+GET http://localhost:5183/api/TimeTracker/2024-08-22
+Accept: application/json
+
+###
+
+# Récupérer un worklog spécifique par ID pour une date donnée
+GET http://localhost:5183/api/TimeTracker/2024-08-22/worklog-1
+Accept: application/json
+
+###
+
+# Démarrer un worklog
+POST http://localhost:5000/api/TimeTracker/2024-08-22/worklog-1/start
+Accept: application/json
+
+###
+
+# Mettre en pause un worklog
+POST http://localhost:5000/api/TimeTracker/2024-08-22/worklog-1/pause
+Accept: application/json
+
+###
+
+# Arrêter un worklog
+POST http://localhost:5000/api/TimeTracker/2024-08-22/worklog-1/stop
+Accept: application/json
+
+###
+
+# Sauvegarder un worklog (créer ou mettre à jour)
+POST http://localhost:5000/api/TimeTracker/2024-08-22
+Content-Type: application/json
+
+{
+  "Id": "worklog-1",
+  "IssueKey": "GRC2-9172",
+  "Comment": "Worked on feature X",
+  "StartTime": "2024-08-22T08:00:00Z",
+  "EndTime": "2024-08-22T12:00:00Z",
+  "IsPaused": false
+}
+
+###
+
+# Supprimer un worklog par ID pour une date donnée
+DELETE http://localhost:5000/api/TimeTracker/2024-08-22/worklog-1
+Accept: application/json
+
+###
+
+# Obtenir l'URL d'une issue Jira par clé
+GET http://localhost:5000/api/TimeTracker/jira/GRC2-9172/url
+Accept: application/json
+
+
+###

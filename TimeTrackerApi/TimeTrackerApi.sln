@@ -1,0 +1,74 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracker.Api", "TimeTracker.Api.csproj", "{5665DEF1-88ED-47AB-891C-905345AAED02}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracker.Core", "..\TimeTracker.Core\TimeTracker.Core.csproj", "{A5EB879D-ACBA-4E7D-B113-698A64121405}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracker.Infrastructure", "..\TimeTracker.Infrastructure\TimeTracker.Infrastructure.csproj", "{CE84E334-B82B-49DC-9A0B-3CA7D9D3833C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracker.Jira", "..\TimeTracker.Jira\TimeTracker.Jira.csproj", "{2F3F6AC2-BAAE-402E-881D-D304C6EE6AA7}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "TimeTracker.Web", "..\TimeTracker.Web\", "{F929622A-A21A-4D8D-98AC-1D434BB607D4}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_64981"
+		Debug.AspNetCompiler.PhysicalPath = "..\TimeTracker.Web\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_64981\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_64981"
+		Release.AspNetCompiler.PhysicalPath = "..\TimeTracker.Web\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_64981\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "64981"
+		SlnRelativePath = "..\TimeTracker.Web\"
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracker.Domain", "..\TimeTracker.Domain\TimeTracker.Domain.csproj", "{A20020CF-D543-4515-BC8B-B6213D258369}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5665DEF1-88ED-47AB-891C-905345AAED02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5665DEF1-88ED-47AB-891C-905345AAED02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5665DEF1-88ED-47AB-891C-905345AAED02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5665DEF1-88ED-47AB-891C-905345AAED02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5EB879D-ACBA-4E7D-B113-698A64121405}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5EB879D-ACBA-4E7D-B113-698A64121405}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5EB879D-ACBA-4E7D-B113-698A64121405}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5EB879D-ACBA-4E7D-B113-698A64121405}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE84E334-B82B-49DC-9A0B-3CA7D9D3833C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE84E334-B82B-49DC-9A0B-3CA7D9D3833C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE84E334-B82B-49DC-9A0B-3CA7D9D3833C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE84E334-B82B-49DC-9A0B-3CA7D9D3833C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F3F6AC2-BAAE-402E-881D-D304C6EE6AA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F3F6AC2-BAAE-402E-881D-D304C6EE6AA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F3F6AC2-BAAE-402E-881D-D304C6EE6AA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F3F6AC2-BAAE-402E-881D-D304C6EE6AA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F929622A-A21A-4D8D-98AC-1D434BB607D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F929622A-A21A-4D8D-98AC-1D434BB607D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F929622A-A21A-4D8D-98AC-1D434BB607D4}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{F929622A-A21A-4D8D-98AC-1D434BB607D4}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{A20020CF-D543-4515-BC8B-B6213D258369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A20020CF-D543-4515-BC8B-B6213D258369}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A20020CF-D543-4515-BC8B-B6213D258369}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A20020CF-D543-4515-BC8B-B6213D258369}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FDED948B-47FE-423C-8765-32FD95E4586F}
+	EndGlobalSection
+EndGlobal

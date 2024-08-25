@@ -1,0 +1,47 @@
+<div class="flex-container">
+  <mat-card class="time-tracker-container">
+    <mat-card-content>
+      <app-date-picker (dateChange)="onDateSelected($event)"></app-date-picker>
+      <div class="controls">
+        <div class="controls-left">
+          <app-project-selector (projectSelected)="onProjectSelected($event)"></app-project-selector>
+          <app-task-selector [project]="selectedProject" (taskSelected)="onTaskSelected($event)"></app-task-selector>
+        </div>
+        <div class="controls-right">
+          <div class="datetime">
+            <app-date-time-picker
+              label="Début"
+              [(dateTime)]="startTime"
+              (dateTimeChange)="validateEndTime()">
+            </app-date-time-picker>
+
+            <app-date-time-picker
+              label="Fin"
+              [(dateTime)]="endTime"
+              [ngClass]="{'invalid': isEndTimeInvalid}"
+              (dateTimeChange)="validateEndTime()">
+            </app-date-time-picker>
+          </div>
+
+          <app-note [(note)]="note"></app-note>
+        </div>
+      </div>
+      <mat-error *ngIf="isEndTimeInvalid" style="margin-bottom: 1rem;">
+        L'heure de fin ne peut pas être antérieure à l'heure de début.
+      </mat-error>
+      @if(isAlreadyTaskInProgress()){
+        <mat-error style="margin-bottom: 1rem;">
+          Vous avez déjà une tâche en cours. Veuillez la terminer avant d'en commencer une nouvelle.
+        </mat-error>
+      }
+      <div class="button-container">
+        <button mat-raised-button color="secondary" (click)="submitWorklog()" [disabled]="isEndTimeInvalid || isAlreadyTaskInProgress()">Enregistrer</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <div class="width-max">
+    <mat-card class="worklog-list-container">
+      <app-worklog-list></app-worklog-list>
+    </mat-card>
+  </div>
+</div>

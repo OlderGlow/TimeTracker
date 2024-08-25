@@ -1,0 +1,86 @@
+.table-list {
+  width: 100%;
+  margin: auto;
+}
+table {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.14);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  color: #f3f3f3;
+}
+th, td {
+  padding-left: 25px;
+  color: #f3f3f3;
+}
+td{
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+mat-icon {
+  font-size: 20px;
+}
+h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #f3f3f3;
+  font-size: 2rem;
+}
+/* Appliquer le border-radius à la table */
+.table-list table {
+  border-radius: 8px;
+  overflow: hidden; /* Nécessaire pour que le border-radius fonctionne correctement */
+}
+
+/* Appliquer le border-radius aux en-têtes */
+.table-list th.mat-header-cell:first-child {
+  border-top-left-radius: 8px;
+}
+
+.table-list tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+
+.table-list tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+}
+
+.table-list th.mat-header-cell {
+  padding: 8px 16px; /* Ajouter du padding vertical et horizontal */
+  padding-left: 25px;
+}
+
+/* Appliquer le padding aux cellules de contenu */
+.table-list td.mat-cell {
+  padding: 8px 16px; /* Ajouter du padding vertical et horizontal */
+}
+.mat-mdc-card-header{
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  color: #f3f3f3;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  padding: 8px 16px;
+}
+
+.issue-link{
+  background: linear-gradient(90deg, #d53369 0%, #cc9622 100%);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  color: #fefefe;
+  padding: 6px 12px;
+}
+
+.issue-link:hover{
+  cursor: pointer;
+}
+
+.input-table{
+  padding: 12px 8px;
+  border-radius: 4px;
+  border: 1px solid #ffffff;
+  background: rgb(255, 255, 255, 0.2);
+  color: #fefefe;
+}

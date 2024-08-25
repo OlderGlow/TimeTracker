@@ -1,0 +1,118 @@
+<mat-card-header>
+  <mat-card-title class="h2-title">
+    Activités du {{ currentDateDisplay() }}
+  </mat-card-title>
+</mat-card-header>
+<app-summary></app-summary>
+<div class="table-list">
+  <h3>Tâches du jour</h3>
+  <table mat-table [dataSource]="worklogs()" class="mat-elevation-z8">
+
+    <!-- Projet Column -->
+    <ng-container matColumnDef="project">
+      <th mat-header-cell *matHeaderCellDef> Projet </th>
+      <td mat-cell *matCellDef="let worklog">
+        <ng-container *ngIf="!worklog.isEditing; else editProject">
+          {{worklog.project}}
+        </ng-container>
+        <ng-template #editProject>
+          <input matInput [(ngModel)]="worklog.project" class="input-table" />
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Type Column -->
+    <ng-container matColumnDef="task">
+      <th mat-header-cell *matHeaderCellDef> Ticket </th>
+      <td mat-cell *matCellDef="let worklog">
+        <ng-container *ngIf="!worklog.isEditing; else editTask">
+          <ng-container *ngIf="worklog.issue; else noIssue">
+            <span
+              class="issue-link"
+              (click)="onIssueClick(worklog)">
+              {{ worklog.issue.key }}
+            </span>
+          </ng-container>
+          <ng-template #noIssue>
+            {{ worklog.task }}
+          </ng-template>
+        </ng-container>
+        <ng-template #editTask>
+          <input matInput [(ngModel)]="worklog.task" class="input-table" />
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Début Column -->
+    <ng-container matColumnDef="startTime">
+      <th mat-header-cell *matHeaderCellDef> Début </th>
+      <td mat-cell *matCellDef="let worklog">
+        <ng-container *ngIf="!worklog.isEditing; else editStartTime">
+          {{worklog.startTime | date: 'HH:mm'}}
+        </ng-container>
+        <ng-template #editStartTime>
+          <input matInput [(ngModel)]="worklog.startTime" type="time" class="input-table" />
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Fin Column -->
+    <ng-container matColumnDef="endTime">
+      <th mat-header-cell *matHeaderCellDef> Fin </th>
+      <td mat-cell *matCellDef="let worklog">
+        <ng-container *ngIf="!worklog.isEditing; else editEndTime">
+          {{worklog.endTime | date: 'HH:mm'}}
+        </ng-container>
+        <ng-template #editEndTime>
+          <input matInput [(ngModel)]="worklog.endTime" type="time" class="input-table" />
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Durée Column -->
+    <ng-container matColumnDef="duration">
+      <th mat-header-cell *matHeaderCellDef> Durée </th>
+      <td mat-cell *matCellDef="let worklog">
+        {{calculateDuration(worklog.startTime, worklog.endTime)}}
+      </td>
+    </ng-container>
+
+    <!-- Note Column -->
+    <ng-container matColumnDef="note">
+      <th mat-header-cell *matHeaderCellDef> Note </th>
+      <td mat-cell *matCellDef="let worklog">
+        <ng-container *ngIf="!worklog.isEditing; else editNote">
+          {{worklog.note}}
+        </ng-container>
+        <ng-template #editNote>
+          <input matInput [(ngModel)]="worklog.note" class="input-table"/>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let worklog">
+        <button mat-icon-button color="secondary" (click)="editWorklog(worklog)" *ngIf="!worklog.isEditing" style="color: #fefefe;">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" (click)="saveWorklog(worklog)" *ngIf="worklog.isEditing">
+          <mat-icon>check</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteWorklog(worklog)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="resumeWorklog(worklog)" [disabled]="!worklog.endTime">
+          <mat-icon>play_arrow</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="stopWorklog(worklog)" [disabled]="worklog.endTime">
+          <mat-icon>stop</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
