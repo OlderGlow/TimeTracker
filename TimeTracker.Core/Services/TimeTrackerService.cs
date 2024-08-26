@@ -94,6 +94,7 @@ namespace TimeTracker.Core.Services
                 {
                     worklog.Issue = new JiraIssue
                     {
+                        Id = issue.Id,
                         Key = issue.Key,
                         Summary = issue.Summary,
                         Url = issue.Url
@@ -109,14 +110,21 @@ namespace TimeTracker.Core.Services
 
             var jiraTimeEntry = new JiraTimeEntry
             {
-                Id = worklog.Id,
+                Id = worklog.Issue?.Id ?? worklog.Id,
                 StartTime = worklog.StartTime,
                 EndTime = worklog.EndTime
             };
 
             if (worklog.IsPaused)
             {
-                // await _jiraService.UpdateTimeSpentAsync(worklog.Name, jiraTimeEntry);
+                try
+                {
+                    await _jiraService.UpdateTimeSpentAsync(worklog.Name, jiraTimeEntry);
+                }
+                catch(Exception e)
+                {
+                    logger.LogError(e, "[TimeTrackerService - SaveWorklogAsync] - Error while updating time spent in Jira");
+                }
             }
 
             return worklogResult;
