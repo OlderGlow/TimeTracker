@@ -25,7 +25,7 @@ jobs:
         dotnet restore TimeTracker.Domain/TimeTracker.Domain.csproj
         dotnet restore TimeTracker.Infrastructure/TimeTracker.Infrastructure.csproj
         dotnet restore TimeTracker.Jira/TimeTracker.Jira.csproj
-        dotnet restore TimeTrackerApi/TimeTrackerApi.csproj
+        dotnet restore TimeTrackerApi/TimeTracker.Api.csproj
     
     - name: Build .NET projects
       run: |
@@ -33,7 +33,7 @@ jobs:
         dotnet build TimeTracker.Domain/TimeTracker.Domain.csproj --no-restore
         dotnet build TimeTracker.Infrastructure/TimeTracker.Infrastructure.csproj --no-restore
         dotnet build TimeTracker.Jira/TimeTracker.Jira.csproj --no-restore
-        dotnet build TimeTrackerApi/TimeTrackerApi.csproj --no-restore
+        dotnet build TimeTrackerApi/TimeTracker.Api.csproj --no-restore
     
     - name: Test .NET projects
       run: |
@@ -41,4 +41,4 @@ jobs:
         dotnet test TimeTracker.Domain/TimeTracker.Domain.csproj --no-build --verbosity normal
         dotnet test TimeTracker.Infrastructure/TimeTracker.Infrastructure.csproj --no-build --verbosity normal
         dotnet test TimeTracker.Jira/TimeTracker.Jira.csproj --no-build --verbosity normal
-        dotnet test TimeTrackerApi/TimeTrackerApi.csproj --no-build --verbosity normal
+        dotnet test TimeTrackerApi/TimeTracker.Api.csproj --no-build --verbosity normal
