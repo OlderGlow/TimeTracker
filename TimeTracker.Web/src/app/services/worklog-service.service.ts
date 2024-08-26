@@ -113,7 +113,7 @@ export class WorklogService {
       category: 0,
       startTime: worklog.startTime,
       endTime: worklog.endTime ?? null,
-      isPaused: !worklog.endTime,
+      isPaused: worklog.endTime !== null,
       notes: worklog.note,
       project: worklog.project,
     };

@@ -14,6 +14,7 @@
             var issue = await _jiraClient.Issues.GetIssueAsync(issueKey);
             return new JiraIssue
             {
+                Id = issue.JiraIdentifier,
                 Key = issue.Key.Value,
                 Summary = issue.Summary,
                 Url = GetIssueUrl(issue.Key.Value)
@@ -39,7 +40,7 @@
             }
             else
             {
-                var newWorklog = new Worklog(timeEntry.TimeSpent.ToString(), timeEntry.StartTime)
+                var newWorklog = new Worklog(TimespanToJiraTimeFormat(timeEntry.TimeSpent), timeEntry.StartTime)
                 {
                     Comment = timeEntry.Comment
                 };
@@ -54,6 +55,11 @@
             return worklogs.FirstOrDefault(w => w.Id == worklogId);
         }
 
+        private static string TimespanToJiraTimeFormat(TimeSpan timeSpan)
+        {
+            return $"{timeSpan.Hours}h {timeSpan.Minutes}m";
+        }
+
         public async Task<JiraIssue?> GetIssueFromJqlAsync(string requestJql)
         {
             var result = await _jiraClient.Issues.GetIssuesFromJqlAsync(requestJql);
@@ -63,6 +69,7 @@
             }
             return new JiraIssue
             {
+                Id = result.First().JiraIdentifier,
                 Key = result.First().Key.Value,
                 Summary = result.First().Summary,
                 Url = GetIssueUrl(result.First().Key.Value)
