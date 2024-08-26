@@ -11,27 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracker.Infrastructure"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracker.Jira", "..\TimeTracker.Jira\TimeTracker.Jira.csproj", "{2F3F6AC2-BAAE-402E-881D-D304C6EE6AA7}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "TimeTracker.Web", "..\TimeTracker.Web\", "{F929622A-A21A-4D8D-98AC-1D434BB607D4}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_64981"
-		Debug.AspNetCompiler.PhysicalPath = "..\TimeTracker.Web\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_64981\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_64981"
-		Release.AspNetCompiler.PhysicalPath = "..\TimeTracker.Web\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_64981\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "64981"
-		SlnRelativePath = "..\TimeTracker.Web\"
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeTracker.Domain", "..\TimeTracker.Domain\TimeTracker.Domain.csproj", "{A20020CF-D543-4515-BC8B-B6213D258369}"
 EndProject
 Global
