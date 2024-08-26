@@ -58,20 +58,6 @@ public class TimeTrackerController(ITimeTrackerService timeTrackerService) : Con
         }
     }
 
-    [HttpPost("{date}/{worklogId}/pause")]
-    public async Task<ActionResult<TrackerResult<string>>> PauseWorklog(string date, string worklogId)
-    {
-        try
-        {
-            await _timeTrackerService.PauseWorklogAsync(worklogId, date);
-            return Ok(TrackerResult<string>.Success("Worklog paused successfully"));
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, TrackerResult<string>.Failure("ERR005", ex.Message));
-        }
-    }
-
     [HttpPost("{date}/{worklogId}/stop")]
     public async Task<ActionResult<TrackerResult<string>>> StopWorklog(string date, string worklogId)
     {

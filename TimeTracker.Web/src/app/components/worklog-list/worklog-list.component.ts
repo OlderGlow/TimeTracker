@@ -19,10 +19,12 @@ import { FormsModule } from '@angular/forms';
 export class WorklogListComponent {
 
   worklogService = inject(WorklogService);
-  worklogs = this.worklogService.worklogs;
+  worklogs$ = this.worklogService.worklogs;
+  worklogs = computed(() => this.worklogs$().sort((a, b) => new Date(b.startTime).getTime() - new Date(a.startTime).getTime()));
   displayedColumns: string[] = ['project', 'task', 'startTime', 'endTime', 'duration', 'note', 'actions'];
   currentDate = this.worklogService.currentDate;
   currentDateDisplay = computed(() => this.currentDate().replace(/-/g, '/'));
+  mostRecentWorklog = computed(() => this.worklogs().length > 0 ? this.worklogs()[0] : null);
 
   calculateDuration(startTime: Date, endTime: Date | null): string {
     if (!startTime || !endTime) return '';
@@ -40,13 +42,12 @@ export class WorklogListComponent {
     if(!worklog.id) return;
 
     this.worklogService.deleteWorklog(worklog.id).subscribe(() => {
-      this.worklogs.set(this.worklogs().filter(w => w.id !== worklog.id));
+      this.worklogs$.set(this.worklogs().filter(w => w.id !== worklog.id));
     });
   }
 
   saveWorklog(worklog: Worklog) {
     worklog.isEditing = false;
-    console.log(worklog);
   }
 
   resumeWorklog(worklog: Worklog) {
@@ -60,6 +61,14 @@ export class WorklogListComponent {
     if (!worklog.endTime) {
       worklog.endTime = new Date();
       this.worklogService.worklogs.set(this.worklogs().map(w => w.id === worklog.id ? worklog : w));
+    }
+  }
+
+  toggleWorklog(worklog: any) {
+    if (!worklog.endTime) {
+      this.stopWorklog(worklog);
+    } else {
+      this.resumeWorklog(worklog);
     }
   }
 
@@ -87,6 +96,31 @@ export class WorklogListComponent {
       return true;
     } catch (_) {
       return false;
+    }
+  }
+
+  showIssue(worklog: Worklog) {
+    if (worklog.issue?.summary?.includes('Daily Scrum')) {
+      return 'Daily Scrum';
+    } else if (worklog.issue?.summary?.includes('Réunion')) {
+      return 'Réunion';
+    } else if (worklog.issue?.summary?.includes('Gestion de projet')) {
+      return 'Gestion de projet';
+    }
+    else {
+      return worklog.issue?.key;
+    }
+  }
+
+  getIssueClass(worklog: Worklog): string {
+    if (worklog.issue?.summary?.includes('Daily Scrum')) {
+      return 'daily-scrum-class';
+    } else if (worklog.issue?.summary?.includes('Réunion')) {
+      return 'reunion-class';
+    } else if (worklog.issue?.summary?.includes('Gestion de projet')) {
+      return 'gestion-projet-class';
+    } else {
+      return 'default-class';
     }
   }
 }

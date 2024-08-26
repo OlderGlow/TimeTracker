@@ -29,8 +29,11 @@
           <ng-container *ngIf="worklog.issue; else noIssue">
             <span
               class="issue-link"
-              (click)="onIssueClick(worklog)">
-              {{ worklog.issue.key }}
+              [ngClass]="getIssueClass(worklog)"
+              (click)="onIssueClick(worklog)"
+              [title]="worklog.issue.summary"
+              >
+              {{ showIssue(worklog) }}
             </span>
           </ng-container>
           <ng-template #noIssue>
@@ -103,14 +106,15 @@
         <button mat-icon-button color="warn" (click)="deleteWorklog(worklog)">
           <mat-icon>delete</mat-icon>
         </button>
-        <button mat-icon-button color="accent" (click)="resumeWorklog(worklog)" [disabled]="!worklog.endTime">
-          <mat-icon>play_arrow</mat-icon>
-        </button>
-        <button mat-icon-button color="accent" (click)="stopWorklog(worklog)" [disabled]="worklog.endTime">
-          <mat-icon>stop</mat-icon>
+        <button mat-icon-button color="accent"
+                (click)="toggleWorklog(worklog)"
+                [disabled]="worklog !== mostRecentWorklog()">
+          <mat-icon *ngIf="!worklog.endTime">stop</mat-icon>
+          <mat-icon *ngIf="worklog.endTime" class="play-arrow">play_arrow</mat-icon>
         </button>
       </td>
     </ng-container>
+
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
