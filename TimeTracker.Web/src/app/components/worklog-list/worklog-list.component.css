@@ -66,15 +66,46 @@ h3 {
 }
 
 .issue-link{
-  background: linear-gradient(90deg, #d53369 0%, #cc9622 100%);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   border-radius: 4px;
   color: #fefefe;
   padding: 6px 12px;
 }
 
+.daily-scrum-class{
+  background: linear-gradient(90deg, #9ebd13 0%, #008552 100%);
+}
+
+.reunion-class{
+  background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+}
+
+.gestion-projet-class{
+  background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
+}
+
+.default-class{
+  background: linear-gradient(90deg, #d53369 0%, #cc9622 100%);
+}
+
 .issue-link:hover{
   cursor: pointer;
+}
+
+.daily-scrum-class.issue-link:hover {
+  filter: brightness(1.1);
+}
+
+.reunion-class.issue-link:hover {
+  filter: brightness(1.1);
+}
+
+.gestion-projet-class.issue-link:hover {
+  filter: brightness(1.1);
+}
+
+.default-class.issue-link:hover {
+  filter: brightness(1.1);
 }
 
 .input-table{
@@ -83,4 +114,12 @@ h3 {
   border: 1px solid #ffffff;
   background: rgb(255, 255, 255, 0.2);
   color: #fefefe;
+}
+
+::ng-deep .play-arrow {
+  color: green;
+}
+
+::ng-deep .mat-mdc-icon-button[disabled] .play-arrow {
+  color: grey;
 }

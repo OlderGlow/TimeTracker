@@ -41,16 +41,6 @@ namespace TimeTracker.Core.Services
             }
         }
 
-        public async Task PauseWorklogAsync(string worklogId, string date)
-        {
-            var worklog = await _storageService.GetWorklogAsync(worklogId, date);
-            if (worklog != null && !worklog.IsPaused)
-            {
-                worklog.IsPaused = true;
-                await _storageService.SaveWorklogAsync(worklog, date);
-            }
-        }
-
         public async Task StopWorklogAsync(string worklogId, string date)
         {
             var worklog = await _storageService.GetWorklogAsync(worklogId, date);

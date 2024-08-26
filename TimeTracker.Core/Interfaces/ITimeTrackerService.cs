@@ -6,7 +6,6 @@ using TimeTracker.Jira.Models;
 public interface ITimeTrackerService
 {
     Task StartWorklogAsync(string worklogId, string date);
-    Task PauseWorklogAsync(string worklogId, string date);
     Task StopWorklogAsync(string worklogId, string date);
     Task<List<Worklog>> GetWorklogsAsync(string date);
     Task<Worklog?> GetWorklogAsync(string worklogId, string date);
