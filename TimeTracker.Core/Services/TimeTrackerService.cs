@@ -27,7 +27,6 @@ namespace TimeTracker.Core.Services
             if (worklog != null)
             {
                 worklog.StartTime = DateTime.Now;
-                worklog.IsPaused = false;
                 await _storageService.SaveWorklogAsync(worklog, date);
 
                 var jiraTimeEntry = new JiraTimeEntry
@@ -105,7 +104,7 @@ namespace TimeTracker.Core.Services
                 EndTime = worklog.EndTime
             };
 
-            if (worklog.IsPaused)
+            if (worklog.IsCompleted)
             {
                 try
                 {
@@ -124,7 +123,6 @@ namespace TimeTracker.Core.Services
         {
             await _storageService.DeleteWorklogAsync(worklogId, date);
         }
-
 
         public async Task<JiraIssue?> GetJiraIssueAsync(string? projectId, string issueKey)
         {

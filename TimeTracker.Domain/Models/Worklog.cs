@@ -17,7 +17,7 @@ namespace TimeTracker.Domain.Models
         public CategoryEnum Category { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime? EndTime { get; set; }
-        public bool IsPaused { get; set; }
+        public bool IsCompleted => EndTime != null;
         public JiraIssue? Issue { get; set; }
     }
 }
