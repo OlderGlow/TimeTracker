@@ -45,7 +45,7 @@ namespace TimeTracker.Core.Services
             var worklog = await _storageService.GetWorklogAsync(worklogId, date);
             if (worklog != null)
             {
-                worklog.EndTime = DateTime.Now;
+                worklog.EndTime = DateTime.Now.ToUniversalTime();
                 await _storageService.SaveWorklogAsync(worklog, date);
 
                 var jiraTimeEntry = new JiraTimeEntry
