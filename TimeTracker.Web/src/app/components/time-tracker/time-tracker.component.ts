@@ -8,14 +8,14 @@ import { WorklogListComponent } from "../worklog-list/worklog-list.component";
 import { CommonModule } from '@angular/common';
 import { Worklog } from '../../models/worklog';
 import { DatePickerComponent } from "./date-picker/date-picker.component";
-import { WorklogService } from '../../services/worklog-service.service';
+import { WorklogService } from '../../services/worklog.service';
 import { format } from 'date-fns';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { JiraService } from '../../services/jira-service.service';
+import { JiraService } from '../../services/jira.service';
 
 @Component({
   selector: 'app-time-tracker',

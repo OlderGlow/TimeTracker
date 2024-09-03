@@ -8,7 +8,7 @@ using TimeTracker.Jira.Models;
 
 [ApiController]
 [Route("api/[controller]")]
-public class TimeTrackerController(ITimeTrackerService timeTrackerService) : ControllerBase
+public class TimeTrackerController(ITimeTrackerService timeTrackerService, ILogger<TimeTrackerController> _logger) : ControllerBase
 {
     private readonly ITimeTrackerService _timeTrackerService = timeTrackerService;
 
@@ -22,6 +22,7 @@ public class TimeTrackerController(ITimeTrackerService timeTrackerService) : Con
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, "Error while getting worklogs");
             return StatusCode(500, TrackerResult<List<Worklog>>.Failure("ERR001", ex.Message));
         }
     }
@@ -58,7 +59,7 @@ public class TimeTrackerController(ITimeTrackerService timeTrackerService) : Con
         }
     }
 
-    [HttpPost("{date}/{worklogId}/stop")]
+    [HttpPut("{date}/{worklogId}/stop")]
     public async Task<ActionResult<TrackerResult<string>>> StopWorklog(string date, string worklogId)
     {
         try

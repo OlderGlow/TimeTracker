@@ -8,6 +8,6 @@ export interface WorklogDto {
   endTime: Date | null;
   notes: string;
   category: number;
-  isPaused: boolean;
+  isCompleted: boolean;
   issue?: Issue;
 }

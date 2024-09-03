@@ -1,7 +1,7 @@
 import { Component, effect, inject, WritableSignal, signal } from '@angular/core';
 import { Worklog } from '../../../models/worklog';
 import { MatCardModule } from '@angular/material/card';
-import { WorklogService } from '../../../services/worklog-service.service';
+import { WorklogService } from '../../../services/worklog.service';
 import { format } from 'date-fns';
 
 @Component({

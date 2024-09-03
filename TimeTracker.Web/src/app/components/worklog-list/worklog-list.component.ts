@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { SummaryComponent } from "../time-tracker/summary/summary.component";
 import { MatCardModule } from '@angular/material/card';
-import { WorklogService } from '../../services/worklog-service.service';
+import { WorklogService } from '../../services/worklog.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -60,7 +60,11 @@ export class WorklogListComponent {
   stopWorklog(worklog: Worklog) {
     if (!worklog.endTime) {
       worklog.endTime = new Date();
-      this.worklogService.worklogs.set(this.worklogs().map(w => w.id === worklog.id ? worklog : w));
+      if(worklog.id) {
+        this.worklogService.stopWorklog(this.currentDate(), worklog.id).subscribe(() => {
+          this.worklogService.worklogs.set(this.worklogs().map(w => w.id === worklog.id ? worklog : w));
+        });
+      }
     }
   }
 

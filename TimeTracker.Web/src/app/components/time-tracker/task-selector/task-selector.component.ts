@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { JiraService } from '../../../services/jira-service.service';
+import { JiraService } from '../../../services/jira.service';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
