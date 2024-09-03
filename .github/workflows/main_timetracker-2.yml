@@ -22,13 +22,13 @@ jobs:
         run: dotnet build --configuration Release TimeTrackerApi/TimeTrackerApi.sln
 
       - name: dotnet publish
-        run: dotnet publish TimeTrackerApi/TimeTrackerApi.sln -c Release -o ${{env.DOTNET_ROOT}}/TimeTrackerApi
+        run: dotnet publish TimeTrackerApi/TimeTrackerApi.sln -c Release -o ${{github.workspace}}/TimeTrackerApi
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
-          path: ${{env.DOTNET_ROOT}}/TimeTrackerApi
+          path: ${{github.workspace}}/TimeTrackerApi
 
   deploy:
     runs-on: windows-latest
@@ -44,7 +44,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: .net-app
-      
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -57,5 +57,4 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'timetracker-2'
-          slot-name: 'Production'
-          package: .
+          package: ${{github.workspace}}/TimeTrackerApi
